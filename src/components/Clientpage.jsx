@@ -1,10 +1,10 @@
-import React,{useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import ClientsTable from './ClientsTable'
 
 export default function Clientpage(props) {
-    const nav=useNavigate()
-    const [inp,setInp]=useState('')
+    const nav = useNavigate()
+    const [inp, setInp] = useState('')
     const [btnsFlag, setBtnsFlag] = useState(false)
     let y = props.mishapArr.find((val) => { return val.code == inp })
 
@@ -72,11 +72,12 @@ export default function Clientpage(props) {
 
     let arr = []
     for (let i = 0; i < props.val.mishaps.length; i++) {
-        arr.push(props.val.mishaps[i])
+        arr.push(Number(props.val.mishaps[i]))
     }
+    console.log(arr)
     const addMishap = () => {
         for (let i = 0; i < arr.length; i++) {
-            if (arr[i] === Number(inp)) {
+            if (arr.includes(Number(inp))) {
                 alert('מס תקלה כבר קיים אצלך')
                 break
             }
@@ -86,7 +87,6 @@ export default function Clientpage(props) {
             }
         }
     }
-    console.log(arr)
 
     const clearInpValue = () => {
         const element = document.getElementById('inp');
@@ -103,39 +103,39 @@ export default function Clientpage(props) {
             </tr>
         })
     }
-  return (
-    <div id='clientPageDiv'>
-    <h2>hello {props.val.name}</h2>
-    <div style={{ display: 'flex', marginLeft: '20%' }}>
-        <h3 style={{ marginRight: '30px' }}>your details table {`=>`}</h3>
-        {showDetails()}
-    </div>
+    return (
+        <div id='clientPageDiv'>
+            <h2>hello {props.val.name}</h2>
+            <div style={{ display: 'flex', marginLeft: '20%' }}>
+                <h3 style={{ marginRight: '30px' }}>your details table {`=>`}</h3>
+                {showDetails()}
+            </div>
 
 
-    <div style={{ display: 'flex', marginLeft: '20%', marginTop: '50px' }}>
-        <h3 style={{ marginRight: '30px' }}> your mishaps table {`=>`}</h3>
-        {showTable()}
-    </div>
+            <div style={{ display: 'flex', marginLeft: '20%', marginTop: '50px' }}>
+                <h3 style={{ marginRight: '30px' }}> your mishaps table {`=>`}</h3>
+                {showTable()}
+            </div>
 
-    <div style={{marginLeft:'20%'}}>
-        <h5 style={{}}>{`In case that you need to add another mishap code, you can do it here`}</h5>
-        <input style={{ border: '3px black solid', width: '200px', height: '30px', textAlign: 'center', borderRadius: '15px', marginTop: '30px', fontSize: '15px', backgroundColor: '#b297ea' }} id='inp' onClick={() => { setBtnsFlag(false) }} onChange={(e) => { setInp(e.target.value) }} type='text' placeholder='mishap code' />
-        <button style={{ border: '3px black solid', width: '100px', height: '25px', borderRadius: '25px', backgroundColor: 'yellow', fontSize: '15px' }} onClick={() => { checkInp() }}>search</button>
-        {showBtn()}
-    </div>
+            <div style={{ marginLeft: '20%' }}>
+                <h5 style={{}}>{`In case that you need to add another mishap code, you can do it here`}</h5>
+                <input style={{ border: '3px black solid', width: '200px', height: '30px', textAlign: 'center', borderRadius: '15px', marginTop: '30px', fontSize: '15px', backgroundColor: '#b297ea' }} id='inp' onClick={() => { setBtnsFlag(false) }} onChange={(e) => { setInp(e.target.value) }} type='text' placeholder='mishap code' />
+                <button style={{ border: '3px black solid', width: '100px', height: '25px', borderRadius: '25px', backgroundColor: 'yellow', fontSize: '15px' }} onClick={() => { checkInp() }}>search</button>
+                {showBtn()}
+            </div>
 
-    <div>
-        {showOneMishapArr()}
-    </div>
-    <button style={{ height: '25px', borderRadius: '25px', marginTop: '10px', backgroundColor: '#b297ea', color: 'yellow',marginLeft:'20%' }} onClick={() => { nav(`/paypage${props.val.name}`) }}>go to pay page</button>
-    <table id='clientPageTable' style={{ border: '2px black solid', borderCollapse: 'collapse' }}>
-        <tr>
-            <td style={{ border: '4px black solid', fontFamily: 'initial', fontSize: '30px' }}>code</td>
-            <td style={{ border: '4px black solid', fontFamily: 'initial', fontSize: '30px' }}>desc</td>
-            <td style={{ border: '4px black solid', fontFamily: 'initial', fontSize: '30px' }}>cost</td>
-        </tr>
-        {showMishaparr()}
-    </table>
-</div>
-  )
+            <div>
+                {showOneMishapArr()}
+            </div>
+            <button style={{ height: '25px', borderRadius: '25px', marginTop: '10px', backgroundColor: '#b297ea', color: 'yellow', marginLeft: '20%' }} onClick={() => { nav(`/paypage${props.val.name}`) }}>go to pay page</button>
+            <table id='clientPageTable' style={{ border: '2px black solid', borderCollapse: 'collapse' }}>
+                <tr>
+                    <td style={{ border: '4px black solid', fontFamily: 'initial', fontSize: '30px' }}>code</td>
+                    <td style={{ border: '4px black solid', fontFamily: 'initial', fontSize: '30px' }}>desc</td>
+                    <td style={{ border: '4px black solid', fontFamily: 'initial', fontSize: '30px' }}>cost</td>
+                </tr>
+                {showMishaparr()}
+            </table>
+        </div>
+    )
 }

@@ -17,12 +17,15 @@ function App() {
 
   console.log(clientsArr)
   const [mishapArr, setMishapArr] = useState([
-    { code: 111, desc: 'broken lamp', time: 20, cost: 60 },
-    { code: 222, desc: 'broken mirror', time: 10, cost: 50 },
-    { code: 333, desc: 'pantcher', time: 25, cost: 40 },
-    { code: 444, desc: 'broken car wipers', time: 10, cost: 100 },
+    { code: 111, desc: 'broken lamp', time: 1, cost: 60 },
+    { code: 222, desc: 'broken mirror', time: 1, cost: 50 },
+    { code: 333, desc: 'pantcher', time: 1, cost: 40 },
+    { code: 444, desc: 'broken car wipers', time: 1, cost: 100 },
     { code: 555, desc: 'new car engine', time: 30, cost: 2500 },
-    // { code: 666, desc: 'new alternator', time: 32, cost: 1800 },
+    { code: 666, desc: 'new alternator', time: 32, cost: 1800 },
+    { code: 777, desc: 'broken door', time: 4, cost: 4000 },
+    { code: 888, desc: 'Annual test', time: 2, cost: 1500 },
+    { code: 999, desc: 'Nano coating', time: 9, cost: 2000 },
   ])
   const deletsOne = (i) => {
     let temp = [...clientsArr]
@@ -42,18 +45,18 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Homepage clientsArr={clientsArr} />} />
-          <Route path='/newclient' element={<NewClient addNewClient={addNewClient} mishapArr={mishapArr} addTomishaps={addTomishaps} mishaps={mishaps}/>}/>
-         {
-          clientsArr.map((val)=>{
-            return  <Route path={`/client${val.name}`} element={<Clientpage val={val} clientsArr={clientsArr} mishapArr={mishapArr}/>} />
-          })
-         }
-         {
-          clientsArr.map((val)=>{
-            return <Route path={`/paypage${val.name}`} element={<Paypage val={val} clientsArr={clientsArr} mishapArr={mishapArr} deletsOne={deletsOne}/>}/>
-          })
-         }
+          <Route path="*" element={<Homepage clientsArr={clientsArr} />} />
+          <Route path='/newclient' element={<NewClient addNewClient={addNewClient} mishapArr={mishapArr} addTomishaps={addTomishaps} mishaps={mishaps} />} />
+          {
+            clientsArr.map((val) => {
+              return <Route path={`/client${val.name}`} element={<Clientpage val={val} clientsArr={clientsArr} mishapArr={mishapArr} />} />
+            })
+          }
+          {
+            clientsArr.map((val) => {
+              return <Route path={`/paypage${val.name}`} element={<Paypage val={val} clientsArr={clientsArr} mishapArr={mishapArr} deletsOne={deletsOne} />} />
+            })
+          }
         </Routes>
       </BrowserRouter>
     </div>
