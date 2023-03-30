@@ -34,10 +34,10 @@ export default function Clientpage(props) {
     const [flagArr, setFlagArr] = useState(false)
     const checkInp = () => {
         if (inp.length == 0) {
-            alert('אנא רשום מספר קוד')
+            alert('Please enter a code number')
         }
         else if (y == null) {
-            alert('מס תקלה לא קיים')
+            alert('mishap code does not exist')
         }
         else {
             oneMishapArr.push(y)
@@ -78,7 +78,7 @@ export default function Clientpage(props) {
     const addMishap = () => {
         for (let i = 0; i < arr.length; i++) {
             if (arr.includes(Number(inp))) {
-                alert('מס תקלה כבר קיים אצלך')
+                alert('You already have this mishap in your nishap table')
                 break
             }
             else {
@@ -119,7 +119,7 @@ export default function Clientpage(props) {
 
             <div style={{ marginLeft: '20%' }}>
                 <h5 style={{}}>{`In case that you need to add another mishap code, you can do it here`}</h5>
-                <input style={{ border: '3px black solid', width: '200px', height: '30px', textAlign: 'center', borderRadius: '15px', marginTop: '30px', fontSize: '15px', backgroundColor: '#b297ea' }} id='inp' onClick={() => { setBtnsFlag(false) }} onChange={(e) => { setInp(e.target.value) }} type='text' placeholder='mishap code' />
+                <input style={{ border: '3px black solid', width: '200px', height: '30px', textAlign: 'center', borderRadius: '15px', marginTop: '30px', fontSize: '15px', backgroundColor: '#b297ea' }} id='inp' onClick={() => { setBtnsFlag(false); setOneMishapArr([]) }} onChange={(e) => { setInp(e.target.value) }} type='text' placeholder='mishap code' />
                 <button style={{ border: '3px black solid', width: '100px', height: '25px', borderRadius: '25px', backgroundColor: 'yellow', fontSize: '15px' }} onClick={() => { checkInp() }}>search</button>
                 {showBtn()}
             </div>

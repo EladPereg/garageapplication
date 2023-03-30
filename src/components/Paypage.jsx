@@ -34,13 +34,13 @@ export default function Paypage(props) {
     }
     const pay = () => {
         if (number.length == 0 || date.length == 0 || digits.length == 0) {
-            alert('אנא מלא את כל השדות')
+            alert('Please fill in all text fields')
         }
         else if (number.length != 16) {
-            alert('מס כרטיס אשראי צריך להיות באורך של 16 תווים')
+            alert('A credit card number should contain 16 numbers')
         }
         else if (digits.length != 3) {
-            alert('נא להזין רק את 3 הספרות האחרונות בגב הכרטיס')
+            alert('Please enter only the last 3 digits on the back of the card')
         }
         else {
             if (number.length == 16 && digits.length == 3) {
@@ -65,7 +65,7 @@ export default function Paypage(props) {
 
     const showMessage = () => {
         if (flag === false) {
-            return <h1>! תודה ולהתראות</h1>
+            return <h1>Thank you and goodbye !</h1>
         }
     }
 
@@ -78,7 +78,7 @@ export default function Paypage(props) {
     }
     const showBtn = () => {
         if (flagBtn === true) {
-            return <Link to='/'> <button style={{borderRadius:'25px',width:'120px',height:'30px'}} onClick={() => { backToHome() }}  >back to home</button></Link>
+            return <Link to='/'> <button style={{borderRadius:'25px',width:'140px',height:'35px'}} onClick={() => { backToHome() }}  >Return to home page</button></Link>
         }
     }
     const shoePayBtn = () => {

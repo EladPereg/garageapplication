@@ -92,6 +92,13 @@
   border-radius: 25px;
   text-align: center;
 }
+
+#h2NC{
+  position: absolute;
+  left: 20%;
+  margin-top: 150px;
+}
+
 #inp{
   width: 240px;
   height: 30px;
