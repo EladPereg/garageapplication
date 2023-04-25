@@ -42,17 +42,20 @@ export default function NewClient(props) {
     }
 
     const add = () => {
-        if (x == null) {
+        if (code.length == 0) {
+            alert('please enter your code number')
+        }
+        else if (x == null) {
             alert('code number does not exist, please select a code number from the mishaps table')
         }
         else {
             let y = props.mishaps.find((val) => { return val == code })
-            if(y==null){
+            if (y == null) {
                 props.addTomishaps(code)
                 const element = document.getElementById('inp');
                 element.value = '';
             }
-            else{
+            else {
                 alert('You have already added this code')
             }
         }
