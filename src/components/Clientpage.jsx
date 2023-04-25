@@ -59,7 +59,7 @@ export default function Clientpage(props) {
     const showOneMishapArr = () => {
         if (flagArr === true) {
             return oneMishapArr.map((val) => {
-                return <div style={{ border: '2px black solid', width: '500px', marginLeft: '36%' }}>
+                return <div style={{ border: '2px black solid', width: '500px', marginLeft: '43%',borderRadius:'25px',marginTop:'5px' }}>
                     <h4>{`code: ${val.code} -|- desc: ${val.desc} -|- time: ${val.time} -|- cost: ${val.cost}`}</h4>
                 </div>
             })

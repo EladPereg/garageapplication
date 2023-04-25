@@ -46,10 +46,15 @@ export default function NewClient(props) {
             alert('code number does not exist, please select a code number from the mishaps table')
         }
         else {
-
-            props.addTomishaps(code)
-            const element = document.getElementById('inp');
-            element.value = '';
+            let y = props.mishaps.find((val) => { return val == code })
+            if(y==null){
+                props.addTomishaps(code)
+                const element = document.getElementById('inp');
+                element.value = '';
+            }
+            else{
+                alert('You have already added this code')
+            }
         }
     }
 
