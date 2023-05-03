@@ -9,7 +9,7 @@ export default function Homepage(props) {
             return <select className='select' onChange={(e) => { nav(e.target.value) }}>
                 <option>choose id</option>
                 {props.clientsArr.map((val) => {
-                    return <option style={{ backgroundColor: 'yellowgreen', color: 'white', fontSize: '20px' }} value={`/client${val.name}`}>
+                    return <option style={{ backgroundColor: 'lightblue', color: 'green', fontSize: '20px' }} value={`/client${val.name}`}>
                         {val.id}
                     </option>
                 })}
